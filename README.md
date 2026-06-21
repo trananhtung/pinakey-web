@@ -1,7 +1,8 @@
 # PinaKey — Trang giới thiệu (landing page)
 
 Trang web giới thiệu **[PinaKey](https://github.com/trananhtung/pinakey)** — bộ gõ
-tiếng Việt (Telex / VNI / VIQR) cho Linux, IBus và fcitx5, viết hoàn toàn bằng Rust thuần.
+tiếng Việt (Telex / VNI / VIQR) cho **fcitx5** trên Linux, lõi viết hoàn toàn bằng Rust thuần,
+với trải nghiệm **gõ không gạch chân**.
 
 🌐 **Xem trực tiếp:** https://trananhtung.github.io/pinakey-web/
 

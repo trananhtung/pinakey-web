@@ -6,12 +6,12 @@
     <title>PinaKey — Bộ gõ tiếng Việt cho Linux</title>
     <meta
       name="description"
-      content="PinaKey — bộ gõ tiếng Việt (Telex/VNI/VIQR) cho Linux, IBus và fcitx5, viết hoàn toàn bằng Rust thuần. Cài một dòng lệnh."
+      content="PinaKey — bộ gõ tiếng Việt (Telex/VNI/VIQR) cho fcitx5 trên Linux, lõi viết hoàn toàn bằng Rust thuần, gõ không gạch chân."
     />
     <meta property="og:title" content="PinaKey — Bộ gõ tiếng Việt cho Linux" />
     <meta
       property="og:description"
-      content="Gõ tiếng Việt, đúng từ con chữ. Telex/VNI/VIQR cho IBus và fcitx5, thuần Rust."
+      content="Gõ tiếng Việt, đúng từ con chữ. Telex/VNI/VIQR cho fcitx5, lõi thuần Rust, gõ không gạch chân."
     />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="assets/og-image.svg" />
@@ -74,15 +74,16 @@
         <div class="wrap hero-grid">
           <div class="hero-copy">
             <p class="eyebrow" data-i18n="hero.eyebrow">
-              Bộ gõ tiếng Việt cho Linux · viết bằng Rust thuần
+              Bộ gõ tiếng Việt cho fcitx5 · lõi viết bằng Rust thuần
             </p>
             <h1 class="hero-title">
               <span data-i18n="hero.title.a">Gõ tiếng Việt,</span>
               <span class="accent" data-i18n="hero.title.b">đúng từ con chữ.</span>
             </h1>
             <p class="lead" data-i18n="hero.lead">
-              PinaKey là bộ gõ Telex / VNI / VIQR cho IBus và fcitx5 — không cgo,
-              không phụ thuộc Go, chỉ Rust và những con dấu thanh rơi đúng chỗ.
+              PinaKey là bộ gõ Telex / VNI / VIQR cho fcitx5 — lõi thuần Rust, một
+              addon C++ mỏng, và trải nghiệm gõ không gạch chân: chữ hiện thẳng như
+              gõ thường.
             </p>
 
             <div class="hero-actions">
@@ -103,7 +104,8 @@
               <li><span class="dot"></span><span data-i18n="hero.badge1">100% Rust</span></li>
               <li><span class="dot"></span><span data-i18n="hero.badge2">không cgo</span></li>
               <li>
-                <span class="dot"></span><span data-i18n="hero.badge3">IBus + fcitx5</span>
+                <span class="dot"></span
+                ><span data-i18n="hero.badge3">gõ không gạch chân</span>
               </li>
             </ul>
           </div>
@@ -131,11 +133,11 @@
 
             <div class="install-peek">
               <code id="install-cmd-hero"
-                ><span class="cmd-dim">$</span> curl -fsSL .../install-online.sh | bash</code
+                ><span class="cmd-dim">$</span> bash tools/install-fcitx5.sh</code
               >
               <button
                 class="copy-btn"
-                data-copy="#cmd-ibus"
+                data-copy="#cmd-quick"
                 data-copy-idle="hero.copy"
                 data-copy-done="hero.copied"
               >
@@ -208,50 +210,53 @@
           <div class="feature-grid">
             <article class="feature-card" data-reveal>
               <div class="feature-glyph">⌁</div>
-              <h3 data-i18n="f1.title">Thuần Rust, không cgo</h3>
+              <h3 data-i18n="f1.title">Lõi thuần Rust</h3>
               <p data-i18n="f1.body">
-                Toàn bộ engine viết bằng Rust an toàn bộ nhớ. Không nhúng Go, không
-                liên kết C — một binary gọn chạy thẳng.
+                Toàn bộ lõi xử lý viết bằng Rust an toàn bộ nhớ, không cgo. Chỉ một
+                addon C++ mỏng nối vào fcitx5 qua C-ABI.
               </p>
             </article>
             <article class="feature-card" data-reveal>
               <div class="feature-glyph">ă</div>
               <h3 data-i18n="f2.title">Telex · VNI · VIQR</h3>
               <p data-i18n="f2.body">
-                Ba kiểu gõ quen thuộc, biến đổi chính tả và kiểm tra âm tiết được
-                phủ bởi 47 bài test hành vi.
+                Ba kiểu gõ quen thuộc cùng nhiều biến thể dựng sẵn — kể cả Telex
+                đơn giản (gõ dấu chặt). Biến đổi chính tả được kiểm thử kỹ.
               </p>
             </article>
             <article class="feature-card" data-reveal>
-              <div class="feature-glyph">⇌</div>
-              <h3 data-i18n="f3.title">IBus và fcitx5</h3>
+              <div class="feature-glyph">ữ</div>
+              <h3 data-i18n="f3.title">Gõ không gạch chân</h3>
               <p data-i18n="f3.body">
-                Giao thức IBus hiện thực trên zbus; frontend fcitx5 dùng chung lõi
-                engine qua C-ABI. Một lõi, hai khung.
-              </p>
-            </article>
-            <article class="feature-card" data-reveal>
-              <div class="feature-glyph">⚡</div>
-              <h3 data-i18n="f4.title">Nhẹ và nhanh</h3>
-              <p data-i18n="f4.body">
-                Lõi đơn luồng chạy sau một actor qua channel. Khởi động tức thì,
-                ngốn ít RAM, không daemon nặng nề.
+                Chữ hiện thẳng như gõ thường, không preedit gạch chân. Dùng
+                Surrounding Text với app GTK/Qt, hoặc daemon uinput bơm Backspace ở
+                nơi khác.
               </p>
             </article>
             <article class="feature-card" data-reveal>
               <div class="feature-glyph">☺</div>
-              <h3 data-i18n="f5.title">Emoji và macro</h3>
-              <p data-i18n="f5.body">
-                Trie emoji cùng bảng macro để bung gõ tắt — sẵn sàng mở rộng theo
-                nhu cầu.
+              <h3 data-i18n="f4.title">Emoji và Unicode</h3>
+              <p data-i18n="f4.body">
+                Gõ :tên để tra emoji, :u&lt;hex&gt; để chèn ký tự Unicode bất kỳ.
+                Chọn nhanh bằng số hoặc Enter.
               </p>
             </article>
             <article class="feature-card" data-reveal>
-              <div class="feature-glyph">⟨⟩</div>
-              <h3 data-i18n="f6.title">Mã nguồn mở</h3>
+              <div class="feature-glyph">☰</div>
+              <h3 data-i18n="f5.title">Từ điển và gõ tắt</h3>
+              <p data-i18n="f5.body">
+                Từ điển chính tả “giải oan” cho từ mượn (kèm từ điển người dùng),
+                gõ tắt macro, và live-reload khi bạn sửa file — không cần khởi động
+                lại.
+              </p>
+            </article>
+            <article class="feature-card" data-reveal>
+              <div class="feature-glyph">⌖</div>
+              <h3 data-i18n="f6.title">Tinh ý theo ngữ cảnh</h3>
               <p data-i18n="f6.body">
-                Giấy phép tự do, workspace nhiều crate rõ ràng, kiểm thử nghiêm
-                ngặt. Đọc được, sửa được, tin được.
+                Tự loại trừ app tiếng Anh (terminal, IDE…), tự bỏ qua ô mật khẩu,
+                và có menu khay đổi kiểu gõ. Kèm giao diện thiết lập đồ họa thuần
+                Rust.
               </p>
             </article>
           </div>
@@ -264,81 +269,90 @@
           <div class="install-copy" data-reveal>
             <p class="eyebrow" data-i18n="install.eyebrow">Cài đặt</p>
             <h2 class="section-title" data-i18n="install.title">
-              Một dòng lệnh là xong
+              Dựng cho fcitx5 trong vài bước
             </h2>
             <p class="section-lead" data-i18n="install.lead">
-              Trình cài tự nhận diện CPU (x86_64 hoặc aarch64), tải binary bản mới
-              nhất và đăng ký với bộ gõ. Nhấn Super + Space để chuyển sang PinaKey.
+              Cài các gói -dev của fcitx5 rồi chạy script — cargo tự build lõi Rust.
+              Sau đó mở fcitx5-configtool, thêm PinaKey, nhấn Ctrl + Space để chuyển
+              và gõ Telex.
             </p>
             <p class="install-req" data-i18n="install.req">
-              Yêu cầu: một bản Linux có IBus (GNOME mặc định đã có), lệnh curl và
-              quyền sudo. Gỡ cài bất cứ lúc nào bằng cờ --uninstall.
+              Yêu cầu: một bản Linux có fcitx5, Rust ≥ 1.85 và các gói -dev của
+              fcitx5. Hỗ trợ cả Wayland lẫn X11. Đóng gói sẵn (deb/rpm/AUR/Nix) nằm
+              trong thư mục packaging/.
             </p>
             <div class="arch-badges">
-              <span class="arch">x86_64</span>
-              <span class="arch">aarch64</span>
+              <span class="arch">fcitx5</span>
+              <span class="arch">Wayland</span>
+              <span class="arch">X11</span>
             </div>
           </div>
 
           <div class="install-panel" data-reveal>
             <div class="tabs" role="tablist" aria-label="Cách cài">
-              <button role="tab" data-tab="ibus" aria-selected="true" data-i18n="install.tab.ibus">
-                IBus (nhanh nhất)
+              <button role="tab" data-tab="quick" aria-selected="true" data-i18n="install.tab.quick">
+                Cài nhanh
               </button>
-              <button role="tab" data-tab="fcitx" aria-selected="false" data-i18n="install.tab.fcitx">
-                fcitx5
+              <button role="tab" data-tab="manual" aria-selected="false" data-i18n="install.tab.manual">
+                Thủ công (cmake)
               </button>
-              <button role="tab" data-tab="source" aria-selected="false" data-i18n="install.tab.source">
-                Từ mã nguồn
+              <button role="tab" data-tab="gui" aria-selected="false" data-i18n="install.tab.gui">
+                Thiết lập (GUI)
               </button>
             </div>
 
-            <div class="term" data-panel="ibus">
+            <div class="term" data-panel="quick">
               <div class="term-chrome" aria-hidden="true"><span></span><span></span><span></span></div>
-              <pre class="term-body"><code id="cmd-ibus">curl -fsSL https://raw.githubusercontent.com/trananhtung/pinakey/main/tools/install-online.sh | bash</code></pre>
+              <pre class="term-body"><code id="cmd-quick">sudo apt install fcitx5 libfcitx5core-dev libfcitx5utils-dev \
+  libfcitx5config-dev fcitx5-modules-dev extra-cmake-modules cmake g++
+git clone https://github.com/trananhtung/pinakey &amp;&amp; cd pinakey
+bash tools/install-fcitx5.sh</code></pre>
               <button
                 class="copy-btn term-copy"
-                data-copy="#cmd-ibus"
+                data-copy="#cmd-quick"
                 data-copy-idle="install.copy"
                 data-copy-done="install.copied"
               >
                 <span data-copy-label data-i18n="install.copy">Sao chép</span>
               </button>
-            </div>
-
-            <div class="term" data-panel="fcitx" hidden>
-              <div class="term-chrome" aria-hidden="true"><span></span><span></span><span></span></div>
-              <pre class="term-body"><code id="cmd-fcitx">git clone https://github.com/trananhtung/pinakey
-cd pinakey/fcitx5 &amp;&amp; cmake -B build &amp;&amp; cmake --build build
-sudo cmake --install build</code></pre>
-              <button
-                class="copy-btn term-copy"
-                data-copy="#cmd-fcitx"
-                data-copy-idle="install.copy"
-                data-copy-done="install.copied"
-              >
-                <span data-copy-label data-i18n="install.copy">Sao chép</span>
-              </button>
-              <p class="term-note" data-i18n="install.note.fcitx">
-                Frontend fcitx5 đang trên nhánh phát triển — dựng từ thư mục
-                fcitx5/ trong repo.
+              <p class="term-note" data-i18n="install.note.quick">
+                Script lo build, ctest, sudo cmake --install và khởi động lại
+                fcitx5 cho bạn.
               </p>
             </div>
 
-            <div class="term" data-panel="source" hidden>
+            <div class="term" data-panel="manual" hidden>
               <div class="term-chrome" aria-hidden="true"><span></span><span></span><span></span></div>
-              <pre class="term-body"><code id="cmd-source">git clone https://github.com/trananhtung/pinakey
-cd pinakey
-cargo build --release -p pinakey
-bash tools/install.sh</code></pre>
+              <pre class="term-body"><code id="cmd-manual">cmake -S fcitx5 -B fcitx5/build -DCMAKE_INSTALL_PREFIX=/usr
+cmake --build fcitx5/build
+sudo cmake --install fcitx5/build
+fcitx5 -r -d</code></pre>
               <button
                 class="copy-btn term-copy"
-                data-copy="#cmd-source"
+                data-copy="#cmd-manual"
                 data-copy-idle="install.copy"
                 data-copy-done="install.copied"
               >
                 <span data-copy-label data-i18n="install.copy">Sao chép</span>
               </button>
+            </div>
+
+            <div class="term" data-panel="gui" hidden>
+              <div class="term-chrome" aria-hidden="true"><span></span><span></span><span></span></div>
+              <pre class="term-body"><code id="cmd-gui">cargo build --release -p pinakey-settings --features gui
+./target/release/pinakey-settings</code></pre>
+              <button
+                class="copy-btn term-copy"
+                data-copy="#cmd-gui"
+                data-copy-idle="install.copy"
+                data-copy-done="install.copied"
+              >
+                <span data-copy-label data-i18n="install.copy">Sao chép</span>
+              </button>
+              <p class="term-note" data-i18n="install.note.gui">
+                Giao diện thiết lập đồ họa (egui) là tùy chọn — chỉnh kiểu gõ, bảng
+                mã, macro và app loại trừ.
+              </p>
             </div>
           </div>
         </div>

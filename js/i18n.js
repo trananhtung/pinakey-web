@@ -9,11 +9,11 @@ window.PINAKEY_I18N = {
     "nav.story": "Câu chuyện",
     "nav.github": "GitHub",
 
-    "hero.eyebrow": "Bộ gõ tiếng Việt cho Linux · viết bằng Rust thuần",
+    "hero.eyebrow": "Bộ gõ tiếng Việt cho fcitx5 · lõi viết bằng Rust thuần",
     "hero.title.a": "Gõ tiếng Việt,",
     "hero.title.b": "đúng từ con chữ.",
     "hero.lead":
-      "PinaKey là bộ gõ Telex / VNI / VIQR cho IBus và fcitx5 — không cgo, không phụ thuộc Go, chỉ Rust và những con dấu thanh rơi đúng chỗ.",
+      "PinaKey là bộ gõ Telex / VNI / VIQR cho fcitx5 — lõi thuần Rust, một addon C++ mỏng, và trải nghiệm gõ không gạch chân: chữ hiện thẳng như gõ thường.",
     "hero.cta.install": "Cài đặt ngay",
     "hero.cta.github": "Mã nguồn",
     "hero.demo.label": "Telex gõ vào",
@@ -22,7 +22,7 @@ window.PINAKEY_I18N = {
     "hero.copied": "Đã chép!",
     "hero.badge1": "100% Rust",
     "hero.badge2": "không cgo",
-    "hero.badge3": "IBus + fcitx5",
+    "hero.badge3": "gõ không gạch chân",
 
     "try.eyebrow": "Sân chơi",
     "try.title": "Gõ thử ngay trong trình duyệt",
@@ -36,37 +36,40 @@ window.PINAKEY_I18N = {
 
     "features.eyebrow": "Vì sao PinaKey",
     "features.title": "Nhẹ, sạch, và thuần Việt từ trong lõi",
-    "f1.title": "Thuần Rust, không cgo",
+    "f1.title": "Lõi thuần Rust",
     "f1.body":
-      "Toàn bộ engine viết bằng Rust an toàn bộ nhớ. Không nhúng Go, không liên kết C — một binary gọn chạy thẳng.",
+      "Toàn bộ lõi xử lý viết bằng Rust an toàn bộ nhớ, không cgo. Chỉ một addon C++ mỏng nối vào fcitx5 qua C-ABI.",
     "f2.title": "Telex · VNI · VIQR",
     "f2.body":
-      "Ba kiểu gõ quen thuộc, biến đổi chính tả và kiểm tra âm tiết được phủ bởi 47 bài test hành vi.",
-    "f3.title": "IBus và fcitx5",
+      "Ba kiểu gõ quen thuộc cùng nhiều biến thể dựng sẵn — kể cả Telex đơn giản (gõ dấu chặt). Biến đổi chính tả được kiểm thử kỹ.",
+    "f3.title": "Gõ không gạch chân",
     "f3.body":
-      "Giao thức IBus hiện thực trên zbus; frontend fcitx5 dùng chung lõi engine qua C-ABI. Một lõi, hai khung.",
-    "f4.title": "Nhẹ và nhanh",
+      "Chữ hiện thẳng như gõ thường, không preedit gạch chân. Dùng Surrounding Text với app GTK/Qt, hoặc daemon uinput bơm Backspace ở nơi khác.",
+    "f4.title": "Emoji và Unicode",
     "f4.body":
-      "Lõi đơn luồng chạy sau một actor qua channel. Khởi động tức thì, ngốn ít RAM, không daemon nặng nề.",
-    "f5.title": "Emoji và macro",
-    "f5.body": "Trie emoji cùng bảng macro để bung gõ tắt — sẵn sàng mở rộng theo nhu cầu.",
-    "f6.title": "Mã nguồn mở",
+      "Gõ :tên để tra emoji, :u<hex> để chèn ký tự Unicode bất kỳ. Chọn nhanh bằng số hoặc Enter.",
+    "f5.title": "Từ điển và gõ tắt",
+    "f5.body":
+      "Từ điển chính tả “giải oan” cho từ mượn (kèm từ điển người dùng), gõ tắt macro, và live-reload khi bạn sửa file — không cần khởi động lại.",
+    "f6.title": "Tinh ý theo ngữ cảnh",
     "f6.body":
-      "Giấy phép tự do, workspace nhiều crate rõ ràng, kiểm thử nghiêm ngặt. Đọc được, sửa được, tin được.",
+      "Tự loại trừ app tiếng Anh (terminal, IDE…), tự bỏ qua ô mật khẩu, và có menu khay đổi kiểu gõ. Kèm giao diện thiết lập đồ họa thuần Rust.",
 
     "install.eyebrow": "Cài đặt",
-    "install.title": "Một dòng lệnh là xong",
+    "install.title": "Dựng cho fcitx5 trong vài bước",
     "install.lead":
-      "Trình cài tự nhận diện CPU (x86_64 hoặc aarch64), tải binary bản mới nhất và đăng ký với bộ gõ. Nhấn Super + Space để chuyển sang PinaKey.",
-    "install.tab.ibus": "IBus (nhanh nhất)",
-    "install.tab.fcitx": "fcitx5",
-    "install.tab.source": "Từ mã nguồn",
+      "Cài các gói -dev của fcitx5 rồi chạy script — cargo tự build lõi Rust. Sau đó mở fcitx5-configtool, thêm PinaKey, nhấn Ctrl + Space để chuyển và gõ Telex.",
+    "install.tab.quick": "Cài nhanh",
+    "install.tab.manual": "Thủ công (cmake)",
+    "install.tab.gui": "Thiết lập (GUI)",
     "install.copy": "Sao chép",
     "install.copied": "Đã chép!",
     "install.req":
-      "Yêu cầu: một bản Linux có IBus (GNOME mặc định đã có), lệnh curl và quyền sudo. Gỡ cài bất cứ lúc nào bằng cờ --uninstall.",
-    "install.note.fcitx":
-      "Frontend fcitx5 đang trên nhánh phát triển — dựng từ thư mục fcitx5/ trong repo.",
+      "Yêu cầu: một bản Linux có fcitx5, Rust ≥ 1.85 và các gói -dev của fcitx5. Hỗ trợ cả Wayland lẫn X11. Đóng gói sẵn (deb/rpm/AUR/Nix) nằm trong thư mục packaging/.",
+    "install.note.quick":
+      "Script lo build, ctest, sudo cmake --install và khởi động lại fcitx5 cho bạn.",
+    "install.note.gui":
+      "Giao diện thiết lập đồ họa (egui) là tùy chọn — chỉnh kiểu gõ, bảng mã, macro và app loại trừ.",
 
     "story.eyebrow": "Về cái tên",
     "story.title": "Tri ân Francisco de Pina",
@@ -80,11 +83,11 @@ window.PINAKEY_I18N = {
     "time.today": "Bạn gõ Quốc Ngữ — bằng PinaKey",
 
     "cta.title": "Sẵn sàng gõ tiếng Việt thật mượt?",
-    "cta.lead": "Cài trong một dòng. Mở mã nguồn bất cứ lúc nào.",
+    "cta.lead": "Dựng cho fcitx5 từ mã nguồn. Mở mã bất cứ lúc nào.",
     "cta.install": "Cài đặt ngay",
     "cta.star": "Gắn sao trên GitHub",
 
-    "footer.tagline": "Bộ gõ tiếng Việt thuần Rust cho Linux.",
+    "footer.tagline": "Bộ gõ tiếng Việt thuần Rust cho fcitx5 trên Linux.",
     "footer.made": "Làm bằng ♥ cho cộng đồng Linux Việt.",
     "footer.repo": "Kho mã",
     "footer.releases": "Bản phát hành",
@@ -99,11 +102,11 @@ window.PINAKEY_I18N = {
     "nav.story": "Story",
     "nav.github": "GitHub",
 
-    "hero.eyebrow": "A Vietnamese input method for Linux · written in pure Rust",
+    "hero.eyebrow": "A Vietnamese input method for fcitx5 · core written in pure Rust",
     "hero.title.a": "Type Vietnamese,",
     "hero.title.b": "true to the letter.",
     "hero.lead":
-      "PinaKey is a Telex / VNI / VIQR input method for IBus and fcitx5 — no cgo, no Go runtime, just Rust and tone marks that land exactly where they belong.",
+      "PinaKey is a Telex / VNI / VIQR input method for fcitx5 — a pure-Rust core, a thin C++ addon, and underline-free typing: text appears inline, just like normal typing.",
     "hero.cta.install": "Install now",
     "hero.cta.github": "Source code",
     "hero.demo.label": "You type (Telex)",
@@ -112,7 +115,7 @@ window.PINAKEY_I18N = {
     "hero.copied": "Copied!",
     "hero.badge1": "100% Rust",
     "hero.badge2": "no cgo",
-    "hero.badge3": "IBus + fcitx5",
+    "hero.badge3": "no underline",
 
     "try.eyebrow": "Playground",
     "try.title": "Try it right in your browser",
@@ -126,37 +129,40 @@ window.PINAKEY_I18N = {
 
     "features.eyebrow": "Why PinaKey",
     "features.title": "Light, clean, Vietnamese to the core",
-    "f1.title": "Pure Rust, no cgo",
+    "f1.title": "A pure-Rust core",
     "f1.body":
-      "The whole engine is memory-safe Rust. No embedded Go, no C linkage — one tidy binary that just runs.",
+      "The whole processing core is memory-safe Rust, no cgo. Only a thin C++ addon bridges into fcitx5 over a C-ABI.",
     "f2.title": "Telex · VNI · VIQR",
     "f2.body":
-      "Three familiar typing styles. Spelling transforms and syllable checks are covered by 47 behavioural tests.",
-    "f3.title": "IBus and fcitx5",
+      "Three familiar typing styles plus prebuilt variants — including simple Telex (strict tone keys). Spelling transforms are thoroughly tested.",
+    "f3.title": "No underline",
     "f3.body":
-      "IBus is implemented over zbus; the fcitx5 frontend shares the same engine core via a C-ABI. One core, two frames.",
-    "f4.title": "Light and fast",
+      "Text appears inline with no preedit underline. It uses Surrounding Text on GTK/Qt apps, or a uinput daemon that injects Backspace elsewhere.",
+    "f4.title": "Emoji and Unicode",
     "f4.body":
-      "A single-threaded core runs behind a channel actor. Instant start, tiny memory footprint, no heavy daemon.",
-    "f5.title": "Emoji and macros",
-    "f5.body": "An emoji trie and macro table for shortcut expansion — ready to grow with your needs.",
-    "f6.title": "Open source",
+      "Type :name to look up emoji, :u<hex> to insert any Unicode character. Pick with a number key or Enter.",
+    "f5.title": "Dictionary and macros",
+    "f5.body":
+      "A spelling dictionary that clears loanwords (plus your own user dictionary), macro shortcuts, and live-reload when you edit files — no restart needed.",
+    "f6.title": "Context-aware",
     "f6.body":
-      "A free licence, a clear multi-crate workspace, rigorous tests. Readable, hackable, trustworthy.",
+      "It skips English apps (terminals, IDEs…), ignores password fields, and offers a tray menu to switch styles. A pure-Rust settings GUI is included.",
 
     "install.eyebrow": "Install",
-    "install.title": "One line and you're done",
+    "install.title": "Build for fcitx5 in a few steps",
     "install.lead":
-      "The installer detects your CPU (x86_64 or aarch64), downloads the latest binary and registers it with the input framework. Press Super + Space to switch to PinaKey.",
-    "install.tab.ibus": "IBus (fastest)",
-    "install.tab.fcitx": "fcitx5",
-    "install.tab.source": "From source",
+      "Install the fcitx5 -dev packages, then run the script — cargo builds the Rust core for you. Open fcitx5-configtool, add PinaKey, and press Ctrl + Space to switch and type Telex.",
+    "install.tab.quick": "Quick install",
+    "install.tab.manual": "Manual (cmake)",
+    "install.tab.gui": "Settings (GUI)",
     "install.copy": "Copy",
     "install.copied": "Copied!",
     "install.req":
-      "Requires: a Linux with IBus (default on GNOME), curl and sudo. Uninstall anytime with the --uninstall flag.",
-    "install.note.fcitx":
-      "The fcitx5 frontend lives on a development branch — build it from the fcitx5/ folder in the repo.",
+      "Requires: a Linux with fcitx5, Rust ≥ 1.85 and the fcitx5 -dev packages. Works on both Wayland and X11. Prebuilt packages (deb/rpm/AUR/Nix) live in the packaging/ folder.",
+    "install.note.quick":
+      "The script handles build, ctest, sudo cmake --install and restarting fcitx5 for you.",
+    "install.note.gui":
+      "The graphical settings app (egui) is optional — tweak typing style, charset, macros and excluded apps.",
 
     "story.eyebrow": "About the name",
     "story.title": "In honour of Francisco de Pina",
@@ -170,11 +176,11 @@ window.PINAKEY_I18N = {
     "time.today": "You type Quốc Ngữ — with PinaKey",
 
     "cta.title": "Ready to type Vietnamese, smoothly?",
-    "cta.lead": "Install in one line. Read the source anytime.",
+    "cta.lead": "Build it for fcitx5 from source. Read the source anytime.",
     "cta.install": "Install now",
     "cta.star": "Star on GitHub",
 
-    "footer.tagline": "A pure-Rust Vietnamese input method for Linux.",
+    "footer.tagline": "A pure-Rust Vietnamese input method for fcitx5 on Linux.",
     "footer.made": "Made with ♥ for the Vietnamese Linux community.",
     "footer.repo": "Repository",
     "footer.releases": "Releases",
