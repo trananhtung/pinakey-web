@@ -272,10 +272,24 @@
               Dựng cho fcitx5 trong vài bước
             </h2>
             <p class="section-lead" data-i18n="install.lead">
-              Cài các gói -dev của fcitx5 rồi chạy script — cargo tự build lõi Rust.
-              Sau đó mở fcitx5-configtool, thêm PinaKey, nhấn Ctrl + Space để chuyển
-              và gõ Telex.
+              Cài các gói -dev của fcitx5 rồi chạy script cài — cargo tự build lõi
+              Rust. Còn lại chỉ vài bước trong fcitx5-configtool.
             </p>
+
+            <ol class="after-steps" aria-label="Sau khi cài đặt">
+              <li data-i18n-html="install.after.1">
+                Mở <b>fcitx5-configtool</b> (hoặc chạy <code>fcitx5-configtool &amp;</code>).
+              </li>
+              <li data-i18n-html="install.after.2">
+                Thêm input method <b>PinaKey</b> (ngôn ngữ <b>Tiếng Việt</b>) — bỏ
+                tick <i>“Only Current Language”</i> nếu chưa thấy.
+              </li>
+              <li data-i18n-html="install.after.3">
+                Nhấn <b>Ctrl + Space</b> để chuyển, rồi gõ thử:
+                <code>vieetj → việt</code>.
+              </li>
+            </ol>
+
             <p class="install-req" data-i18n="install.req">
               Yêu cầu: một bản Linux có fcitx5, Rust ≥ 1.85 và các gói -dev của
               fcitx5. Hỗ trợ cả Wayland lẫn X11. Đóng gói sẵn (deb/rpm/AUR/Nix) nằm

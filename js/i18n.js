@@ -58,7 +58,13 @@ window.PINAKEY_I18N = {
     "install.eyebrow": "Cài đặt",
     "install.title": "Dựng cho fcitx5 trong vài bước",
     "install.lead":
-      "Cài các gói -dev của fcitx5 rồi chạy script — cargo tự build lõi Rust. Sau đó mở fcitx5-configtool, thêm PinaKey, nhấn Ctrl + Space để chuyển và gõ Telex.",
+      "Cài các gói -dev của fcitx5 rồi chạy script cài — cargo tự build lõi Rust. Còn lại chỉ vài bước trong fcitx5-configtool.",
+    "install.after.title": "Sau khi cài đặt",
+    "install.after.1": "Mở <b>fcitx5-configtool</b> (hoặc chạy <code>fcitx5-configtool &</code>).",
+    "install.after.2":
+      "Thêm input method <b>PinaKey</b> (ngôn ngữ <b>Tiếng Việt</b>) — bỏ tick <i>“Only Current Language”</i> nếu chưa thấy.",
+    "install.after.3":
+      "Nhấn <b>Ctrl + Space</b> để chuyển, rồi gõ thử: <code>vieetj → việt</code>.",
     "install.tab.quick": "Cài nhanh",
     "install.tab.manual": "Thủ công (cmake)",
     "install.tab.gui": "Thiết lập (GUI)",
@@ -151,7 +157,13 @@ window.PINAKEY_I18N = {
     "install.eyebrow": "Install",
     "install.title": "Build for fcitx5 in a few steps",
     "install.lead":
-      "Install the fcitx5 -dev packages, then run the script — cargo builds the Rust core for you. Open fcitx5-configtool, add PinaKey, and press Ctrl + Space to switch and type Telex.",
+      "Install the fcitx5 -dev packages, then run the install script — cargo builds the Rust core for you. The rest is just a few steps in fcitx5-configtool.",
+    "install.after.title": "After installing",
+    "install.after.1": "Open <b>fcitx5-configtool</b> (or run <code>fcitx5-configtool &</code>).",
+    "install.after.2":
+      "Add the <b>PinaKey</b> input method (language <b>Vietnamese</b>) — untick <i>“Only Current Language”</i> if you don't see it.",
+    "install.after.3":
+      "Press <b>Ctrl + Space</b> to switch, then try typing: <code>vieetj → việt</code>.",
     "install.tab.quick": "Quick install",
     "install.tab.manual": "Manual (cmake)",
     "install.tab.gui": "Settings (GUI)",

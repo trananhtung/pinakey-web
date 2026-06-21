@@ -20,6 +20,11 @@
       const key = el.getAttribute("data-i18n");
       if (dict[key] != null) el.textContent = dict[key];
     });
+    // Chuỗi có markup (in đậm, <code>…) — render bằng innerHTML.
+    document.querySelectorAll("[data-i18n-html]").forEach((el) => {
+      const key = el.getAttribute("data-i18n-html");
+      if (dict[key] != null) el.innerHTML = dict[key];
+    });
     document.querySelectorAll("[data-i18n-ph]").forEach((el) => {
       const key = el.getAttribute("data-i18n-ph");
       if (dict[key] != null) el.setAttribute("placeholder", dict[key]);
