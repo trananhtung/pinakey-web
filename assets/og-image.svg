@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="0%" r="100%">
+      <stop offset="0%" stop-color="#e9dfc9"/>
+      <stop offset="60%" stop-color="#f2ebdd"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <text x="90" y="160" font-family="Georgia, serif" font-size="120" font-weight="800" fill="#211c2b"
+        letter-spacing="-2">Tiếng <tspan fill="#c53a24" font-style="italic" font-weight="500">Việt</tspan></text>
+  <text x="92" y="240" font-family="ui-monospace, monospace" font-size="34" fill="#6f6678">telex: Tieesng Vieejt → Tiếng Việt</text>
+  <rect x="90" y="300" width="74" height="74" rx="16" fill="#c53a24"/>
+  <text x="127" y="357" text-anchor="middle" font-family="Georgia, serif" font-size="48" font-weight="800" fill="#fdf7ec">P</text>
+  <text x="186" y="356" font-family="Georgia, serif" font-size="56" font-weight="700" fill="#211c2b">Pina<tspan fill="#c53a24">Key</tspan></text>
+  <text x="92" y="430" font-family="'Be Vietnam Pro', system-ui, sans-serif" font-size="32" fill="#4c4456">Bộ gõ tiếng Việt cho Linux · thuần Rust · IBus + fcitx5</text>
+  <g font-family="ui-monospace, monospace" font-size="24" fill="#2e7d5b">
+    <circle cx="104" cy="510" r="6"/><text x="122" y="518">100% Rust</text>
+    <circle cx="290" cy="510" r="6"/><text x="308" y="518">không cgo</text>
+    <circle cx="486" cy="510" r="6"/><text x="504" y="518">Telex / VNI / VIQR</text>
+  </g>
+  <text x="780" y="250" font-family="Georgia, serif" font-size="320" fill="#c53a24" opacity="0.08">ế</text>
+</svg>

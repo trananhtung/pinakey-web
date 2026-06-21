@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PinaKey — Bộ gõ tiếng Việt cho Linux</title>
+    <meta
+      name="description"
+      content="PinaKey — bộ gõ tiếng Việt (Telex/VNI/VIQR) cho Linux, IBus và fcitx5, viết hoàn toàn bằng Rust thuần. Cài một dòng lệnh."
+    />
+    <meta property="og:title" content="PinaKey — Bộ gõ tiếng Việt cho Linux" />
+    <meta
+      property="og:description"
+      content="Gõ tiếng Việt, đúng từ con chữ. Telex/VNI/VIQR cho IBus và fcitx5, thuần Rust."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="assets/og-image.svg" />
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;0,800;1,500&family=Be+Vietnam+Pro:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Lớp trang trí: dấu thanh trôi nền -->
+    <div class="ambient" aria-hidden="true">
+      <span style="--x: 8%; --y: 18%; --d: 0s">◌́</span>
+      <span style="--x: 82%; --y: 24%; --d: 1.4s">◌̀</span>
+      <span style="--x: 16%; --y: 70%; --d: 2.6s">◌̉</span>
+      <span style="--x: 74%; --y: 64%; --d: 0.8s">◌̃</span>
+      <span style="--x: 46%; --y: 12%; --d: 2s">◌̣</span>
+    </div>
+
+    <!-- ───────────────────────── Header ───────────────────────── -->
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <a href="#top" class="brand" aria-label="PinaKey">
+          <span class="brand-mark" aria-hidden="true">P</span>
+          <span class="brand-name">Pina<span class="brand-key">Key</span></span>
+        </a>
+
+        <nav class="nav" aria-label="Điều hướng chính">
+          <a href="#try" data-i18n="nav.try">Gõ thử</a>
+          <a href="#features" data-i18n="nav.features">Tính năng</a>
+          <a href="#install" data-i18n="nav.install">Cài đặt</a>
+          <a href="#story" data-i18n="nav.story">Câu chuyện</a>
+        </nav>
+
+        <div class="header-tools">
+          <div class="lang-switch" role="group" aria-label="Ngôn ngữ">
+            <button data-lang-btn="vi" aria-pressed="true">VI</button>
+            <button data-lang-btn="en" aria-pressed="false">EN</button>
+          </div>
+          <button id="theme-toggle" class="icon-btn" aria-label="Chuyển tối">☾</button>
+          <a
+            class="gh-link"
+            href="https://github.com/trananhtung/pinakey"
+            target="_blank"
+            rel="noopener"
+            data-i18n="nav.github"
+            >GitHub</a
+          >
+        </div>
+      </div>
+    </header>
+
+    <main id="top">
+      <!-- ───────────────────────── Hero ───────────────────────── -->
+      <section class="hero">
+        <div class="wrap hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow" data-i18n="hero.eyebrow">
+              Bộ gõ tiếng Việt cho Linux · viết bằng Rust thuần
+            </p>
+            <h1 class="hero-title">
+              <span data-i18n="hero.title.a">Gõ tiếng Việt,</span>
+              <span class="accent" data-i18n="hero.title.b">đúng từ con chữ.</span>
+            </h1>
+            <p class="lead" data-i18n="hero.lead">
+              PinaKey là bộ gõ Telex / VNI / VIQR cho IBus và fcitx5 — không cgo,
+              không phụ thuộc Go, chỉ Rust và những con dấu thanh rơi đúng chỗ.
+            </p>
+
+            <div class="hero-actions">
+              <a href="#install" class="btn btn-primary" data-i18n="hero.cta.install"
+                >Cài đặt ngay</a
+              >
+              <a
+                href="https://github.com/trananhtung/pinakey"
+                target="_blank"
+                rel="noopener"
+                class="btn btn-ghost"
+                data-i18n="hero.cta.github"
+                >Mã nguồn</a
+              >
+            </div>
+
+            <ul class="hero-badges" aria-label="Đặc điểm">
+              <li><span class="dot"></span><span data-i18n="hero.badge1">100% Rust</span></li>
+              <li><span class="dot"></span><span data-i18n="hero.badge2">không cgo</span></li>
+              <li>
+                <span class="dot"></span><span data-i18n="hero.badge3">IBus + fcitx5</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Hoạt cảnh: Telex → tiếng Việt -->
+          <div class="hero-demo" data-reveal>
+            <div class="demo-card">
+              <div class="demo-chrome" aria-hidden="true">
+                <span></span><span></span><span></span>
+              </div>
+              <div class="demo-row">
+                <span class="demo-label" data-i18n="hero.demo.label">Telex gõ vào</span>
+                <code class="demo-telex"
+                  ><span id="hero-telex">Tieesng Vieejt</span></code
+                >
+              </div>
+              <div class="demo-arrow" aria-hidden="true">↓</div>
+              <div class="demo-row demo-result">
+                <span class="demo-label" data-i18n="hero.demo.result">PinaKey hiện ra</span>
+                <div class="demo-viet">
+                  <span id="hero-viet">Tiếng Việt</span><span id="hero-caret" class="caret"></span>
+                </div>
+              </div>
+            </div>
+
+            <div class="install-peek">
+              <code id="install-cmd-hero"
+                ><span class="cmd-dim">$</span> curl -fsSL .../install-online.sh | bash</code
+              >
+              <button
+                class="copy-btn"
+                data-copy="#cmd-ibus"
+                data-copy-idle="hero.copy"
+                data-copy-done="hero.copied"
+              >
+                <span data-copy-label data-i18n="hero.copy">Sao chép</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ───────────────────── Gõ thử ───────────────────── -->
+      <section id="try" class="section section-try">
+        <div class="wrap">
+          <div class="section-head" data-reveal>
+            <p class="eyebrow" data-i18n="try.eyebrow">Sân chơi</p>
+            <h2 class="section-title" data-i18n="try.title">
+              Gõ thử ngay trong trình duyệt
+            </h2>
+            <p class="section-lead" data-i18n="try.lead">
+              Không cần cài gì cả. Gõ kiểu Telex và xem dấu thanh tự rơi vào chữ —
+              đúng như khi PinaKey chạy trên máy bạn.
+            </p>
+          </div>
+
+          <div class="play" data-reveal>
+            <div class="play-controls">
+              <div class="method-switch" role="group" aria-label="Kiểu gõ">
+                <span class="control-label" data-i18n="try.method">Kiểu gõ</span>
+                <button data-method="telex" aria-pressed="true">Telex</button>
+                <button data-method="vni" aria-pressed="false">VNI</button>
+              </div>
+              <button id="play-clear" class="link-btn" data-i18n="try.clear">Xoá</button>
+            </div>
+
+            <label class="sr-only" for="play-input">Ô gõ thử</label>
+            <textarea
+              id="play-input"
+              class="play-input"
+              rows="2"
+              spellcheck="false"
+              autocapitalize="off"
+              autocomplete="off"
+              data-i18n-ph="try.placeholder"
+              placeholder="Gõ thử ở đây… ví dụ: Tieesng Vieejt"
+            >Xin chaof Vieejt Nam</textarea>
+
+            <div class="play-output" id="play-output" aria-live="polite"></div>
+
+            <div class="examples">
+              <span class="control-label" data-i18n="try.hint">Thử các ví dụ:</span>
+              <button class="chip" data-example="vieetj nam">việt nam</button>
+              <button class="chip" data-example="ddi chowi">đi chơi</button>
+              <button class="chip" data-example="caf phee suwax">cà phê sữa</button>
+              <button class="chip" data-example="hanhj phucs">hạnh phúc</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ───────────────────── Tính năng ───────────────────── -->
+      <section id="features" class="section">
+        <div class="wrap">
+          <div class="section-head" data-reveal>
+            <p class="eyebrow" data-i18n="features.eyebrow">Vì sao PinaKey</p>
+            <h2 class="section-title" data-i18n="features.title">
+              Nhẹ, sạch, và thuần Việt từ trong lõi
+            </h2>
+          </div>
+
+          <div class="feature-grid">
+            <article class="feature-card" data-reveal>
+              <div class="feature-glyph">⌁</div>
+              <h3 data-i18n="f1.title">Thuần Rust, không cgo</h3>
+              <p data-i18n="f1.body">
+                Toàn bộ engine viết bằng Rust an toàn bộ nhớ. Không nhúng Go, không
+                liên kết C — một binary gọn chạy thẳng.
+              </p>
+            </article>
+            <article class="feature-card" data-reveal>
+              <div class="feature-glyph">ă</div>
+              <h3 data-i18n="f2.title">Telex · VNI · VIQR</h3>
+              <p data-i18n="f2.body">
+                Ba kiểu gõ quen thuộc, biến đổi chính tả và kiểm tra âm tiết được
+                phủ bởi 47 bài test hành vi.
+              </p>
+            </article>
+            <article class="feature-card" data-reveal>
+              <div class="feature-glyph">⇌</div>
+              <h3 data-i18n="f3.title">IBus và fcitx5</h3>
+              <p data-i18n="f3.body">
+                Giao thức IBus hiện thực trên zbus; frontend fcitx5 dùng chung lõi
+                engine qua C-ABI. Một lõi, hai khung.
+              </p>
+            </article>
+            <article class="feature-card" data-reveal>
+              <div class="feature-glyph">⚡</div>
+              <h3 data-i18n="f4.title">Nhẹ và nhanh</h3>
+              <p data-i18n="f4.body">
+                Lõi đơn luồng chạy sau một actor qua channel. Khởi động tức thì,
+                ngốn ít RAM, không daemon nặng nề.
+              </p>
+            </article>
+            <article class="feature-card" data-reveal>
+              <div class="feature-glyph">☺</div>
+              <h3 data-i18n="f5.title">Emoji và macro</h3>
+              <p data-i18n="f5.body">
+                Trie emoji cùng bảng macro để bung gõ tắt — sẵn sàng mở rộng theo
+                nhu cầu.
+              </p>
+            </article>
+            <article class="feature-card" data-reveal>
+              <div class="feature-glyph">⟨⟩</div>
+              <h3 data-i18n="f6.title">Mã nguồn mở</h3>
+              <p data-i18n="f6.body">
+                Giấy phép tự do, workspace nhiều crate rõ ràng, kiểm thử nghiêm
+                ngặt. Đọc được, sửa được, tin được.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ───────────────────── Cài đặt ───────────────────── -->
+      <section id="install" class="section section-install">
+        <div class="wrap install-grid">
+          <div class="install-copy" data-reveal>
+            <p class="eyebrow" data-i18n="install.eyebrow">Cài đặt</p>
+            <h2 class="section-title" data-i18n="install.title">
+              Một dòng lệnh là xong
+            </h2>
+            <p class="section-lead" data-i18n="install.lead">
+              Trình cài tự nhận diện CPU (x86_64 hoặc aarch64), tải binary bản mới
+              nhất và đăng ký với bộ gõ. Nhấn Super + Space để chuyển sang PinaKey.
+            </p>
+            <p class="install-req" data-i18n="install.req">
+              Yêu cầu: một bản Linux có IBus (GNOME mặc định đã có), lệnh curl và
+              quyền sudo. Gỡ cài bất cứ lúc nào bằng cờ --uninstall.
+            </p>
+            <div class="arch-badges">
+              <span class="arch">x86_64</span>
+              <span class="arch">aarch64</span>
+            </div>
+          </div>
+
+          <div class="install-panel" data-reveal>
+            <div class="tabs" role="tablist" aria-label="Cách cài">
+              <button role="tab" data-tab="ibus" aria-selected="true" data-i18n="install.tab.ibus">
+                IBus (nhanh nhất)
+              </button>
+              <button role="tab" data-tab="fcitx" aria-selected="false" data-i18n="install.tab.fcitx">
+                fcitx5
+              </button>
+              <button role="tab" data-tab="source" aria-selected="false" data-i18n="install.tab.source">
+                Từ mã nguồn
+              </button>
+            </div>
+
+            <div class="term" data-panel="ibus">
+              <div class="term-chrome" aria-hidden="true"><span></span><span></span><span></span></div>
+              <pre class="term-body"><code id="cmd-ibus">curl -fsSL https://raw.githubusercontent.com/trananhtung/pinakey/main/tools/install-online.sh | bash</code></pre>
+              <button
+                class="copy-btn term-copy"
+                data-copy="#cmd-ibus"
+                data-copy-idle="install.copy"
+                data-copy-done="install.copied"
+              >
+                <span data-copy-label data-i18n="install.copy">Sao chép</span>
+              </button>
+            </div>
+
+            <div class="term" data-panel="fcitx" hidden>
+              <div class="term-chrome" aria-hidden="true"><span></span><span></span><span></span></div>
+              <pre class="term-body"><code id="cmd-fcitx">git clone https://github.com/trananhtung/pinakey
+cd pinakey/fcitx5 &amp;&amp; cmake -B build &amp;&amp; cmake --build build
+sudo cmake --install build</code></pre>
+              <button
+                class="copy-btn term-copy"
+                data-copy="#cmd-fcitx"
+                data-copy-idle="install.copy"
+                data-copy-done="install.copied"
+              >
+                <span data-copy-label data-i18n="install.copy">Sao chép</span>
+              </button>
+              <p class="term-note" data-i18n="install.note.fcitx">
+                Frontend fcitx5 đang trên nhánh phát triển — dựng từ thư mục
+                fcitx5/ trong repo.
+              </p>
+            </div>
+
+            <div class="term" data-panel="source" hidden>
+              <div class="term-chrome" aria-hidden="true"><span></span><span></span><span></span></div>
+              <pre class="term-body"><code id="cmd-source">git clone https://github.com/trananhtung/pinakey
+cd pinakey
+cargo build --release -p pinakey
+bash tools/install.sh</code></pre>
+              <button
+                class="copy-btn term-copy"
+                data-copy="#cmd-source"
+                data-copy-idle="install.copy"
+                data-copy-done="install.copied"
+              >
+                <span data-copy-label data-i18n="install.copy">Sao chép</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ───────────────────── Câu chuyện ───────────────────── -->
+      <section id="story" class="section section-story">
+        <div class="wrap story-grid">
+          <figure class="story-portrait" data-reveal>
+            <img
+              src="assets/francisco-de-pina.jpg"
+              alt="Francisco de Pina trong tranh khắc cùng Alexandre de Rhodes"
+              width="320"
+              height="400"
+              loading="lazy"
+            />
+            <figcaption data-i18n="story.caption">
+              Francisco de Pina — trong tranh khắc cùng Alexandre de Rhodes
+            </figcaption>
+          </figure>
+
+          <div class="story-copy" data-reveal>
+            <p class="eyebrow" data-i18n="story.eyebrow">Về cái tên</p>
+            <h2 class="section-title" data-i18n="story.title">
+              Tri ân Francisco de Pina
+            </h2>
+            <p class="story-p" data-i18n="story.p1">
+              PinaKey mang tên Francisco de Pina (1585–1625), giáo sĩ Dòng Tên
+              người Bồ Đào Nha — người đầu tiên La-tinh hoá tiếng Việt một cách có
+              hệ thống tại Thanh Chiêm – Hội An.
+            </p>
+            <p class="story-p" data-i18n="story.p2">
+              Ông đặt nền móng cho chữ Quốc Ngữ, thứ chữ mà mọi bàn phím tiếng Việt
+              hôm nay đều gõ, và là thầy dạy tiếng Việt cho Alexandre de Rhodes.
+              Hậu tố “Key” đánh dấu đây là một bộ gõ.
+            </p>
+
+            <ol class="timeline" aria-label="Dòng thời gian chữ Quốc Ngữ">
+              <li>
+                <span class="t-year">1585</span>
+                <span class="t-text" data-i18n="time.1585">Pina sinh ra ở Bồ Đào Nha</span>
+              </li>
+              <li>
+                <span class="t-year">1617</span>
+                <span class="t-text" data-i18n="time.1617"
+                  >Tới Đàng Trong, bắt đầu ghi tiếng Việt bằng chữ La-tinh</span
+                >
+              </li>
+              <li>
+                <span class="t-year t-now">↦</span>
+                <span class="t-text" data-i18n="time.today"
+                  >Bạn gõ Quốc Ngữ — bằng PinaKey</span
+                >
+              </li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <!-- ───────────────────── CTA ───────────────────── -->
+      <section class="section section-cta">
+        <div class="wrap cta-inner" data-reveal>
+          <h2 data-i18n="cta.title">Sẵn sàng gõ tiếng Việt thật mượt?</h2>
+          <p data-i18n="cta.lead">Cài trong một dòng. Mở mã nguồn bất cứ lúc nào.</p>
+          <div class="cta-actions">
+            <a href="#install" class="btn btn-primary" data-i18n="cta.install">Cài đặt ngay</a>
+            <a
+              href="https://github.com/trananhtung/pinakey"
+              target="_blank"
+              rel="noopener"
+              class="btn btn-ghost"
+              data-i18n="cta.star"
+              >Gắn sao trên GitHub</a
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ───────────────────── Footer ───────────────────── -->
+    <footer class="site-footer">
+      <div class="wrap footer-inner">
+        <div class="footer-brand">
+          <span class="brand-name"
+            >Pina<span class="brand-key">Key</span></span
+          >
+          <p data-i18n="footer.tagline">Bộ gõ tiếng Việt thuần Rust cho Linux.</p>
+          <p class="footer-made" data-i18n="footer.made">
+            Làm bằng ♥ cho cộng đồng Linux Việt.
+          </p>
+        </div>
+        <nav class="footer-links" aria-label="Liên kết">
+          <a href="https://github.com/trananhtung/pinakey" target="_blank" rel="noopener" data-i18n="footer.repo">Kho mã</a>
+          <a href="https://github.com/trananhtung/pinakey/releases" target="_blank" rel="noopener" data-i18n="footer.releases">Bản phát hành</a>
+          <a href="https://github.com/trananhtung/pinakey/blob/main/ARCHITECTURE.md" target="_blank" rel="noopener" data-i18n="footer.arch">Kiến trúc</a>
+        </nav>
+      </div>
+    </footer>
+
+    <script src="js/i18n.js"></script>
+    <script src="js/telex.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
